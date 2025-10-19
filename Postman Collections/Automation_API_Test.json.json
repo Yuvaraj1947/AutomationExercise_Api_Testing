@@ -1,0 +1,529 @@
+{
+	"info": {
+		"_postman_id": "3634f05f-d035-4501-a503-2d383ada43cb",
+		"name": "AutomationPractice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Products List",
+			"id": "551a4284-b3d5-4794-b21d-27d23a8b8c71",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/api/productsList"
+			},
+			"response": []
+		},
+		{
+			"name": "POST To All Products List",
+			"id": "79804ea5-f655-4faa-b4e0-50baa3131053",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "{{baseURL}}/api/productsList"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Brands List",
+			"id": "e188917d-987f-4c08-9b68-cc8fbb4baec5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": "{{baseURL}}/api/brandsList"
+			},
+			"response": []
+		},
+		{
+			"name": "POST To Search Product",
+			"id": "82563f16-7b83-4ee3-b97c-f8553bced4c4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "search_product",
+							"value": "top",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{baseURL}}/api/searchProduct"
+			},
+			"response": []
+		},
+		{
+			"name": "POST To Search Product without search_product parameter",
+			"id": "55dac237-bb03-456c-8219-ecb8d5b8fe4c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "search_product",
+							"value": "top",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": "{{baseURL}}/api/searchProduct"
+			},
+			"response": []
+		},
+		{
+			"name": "POST To Verify Login with valid details",
+			"id": "70c7118b-f583-4c91-b507-b9f32b78393d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "sanju258@gmail.com",
+							"type": "text",
+							"uuid": "fbd2e813-c9e7-4a6a-8491-24e559e20023",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "Sanju@258",
+							"type": "text",
+							"uuid": "878fe642-4a07-4c2f-8531-c0cf7adab6bf",
+							"disabled": true
+						}
+					]
+				},
+				"url": "https://automationexercise.com/api/verifyLogin"
+			},
+			"response": []
+		},
+		{
+			"name": "POST To Verify Login without email parameter",
+			"id": "2f7011bf-52ae-45f7-8480-9db5d02702a3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE To Verify Login",
+			"id": "a457e038-3dc1-45a0-b5ec-4d030d07ff1f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseURL}}/api/verifyLogin"
+			},
+			"response": []
+		},
+		{
+			"name": "POST To Verify Login with invalid details",
+			"id": "2e11845f-517c-4692-b860-2ec5cb1bf687",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "sanju852@gmail.com",
+							"type": "text",
+							"uuid": "5e8a15d7-f581-4120-8b98-252904b6d865"
+						},
+						{
+							"key": "password",
+							"value": "Sanju@258",
+							"type": "text",
+							"uuid": "d579526c-b0e8-4d72-8b0f-cddf6b17db71"
+						}
+					]
+				},
+				"url": "{{baseURL}}/api/verifyLogin"
+			},
+			"response": []
+		},
+		{
+			"name": "POST To Create/Register User Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09ced35b-228e-4901-bf6d-52a9f64bb6e0",
+						"exec": [
+							"// 1. Validate response status code is 200 or 201",
+							"pm.test(\"Status code is 200 or 201\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							"",
+							"// 2. Check for success message or user ID in response body",
+							"pm.test(\"Response contains success message or user ID\", function () {",
+							"    let jsonData;",
+							"    try {",
+							"        jsonData = pm.response.json();",
+							"    } catch (e) {",
+							"        pm.expect.fail(\"Response is not valid JSON\");",
+							"    }",
+							"    if (pm.response.code === 200 || pm.response.code === 201) {",
+							"        pm.expect(",
+							"            jsonData.hasOwnProperty(\"message\") && /success/i.test(jsonData.message) ||",
+							"            jsonData.hasOwnProperty(\"userId\") ||",
+							"            jsonData.hasOwnProperty(\"id\")",
+							"        ).to.be.true;",
+							"    }",
+							"});",
+							"",
+							"// 3. Log error message if response indicates error (e.g., 400)",
+							"if (pm.response.code >= 400) {",
+							"    let jsonData;",
+							"    try {",
+							"        jsonData = pm.response.json();",
+							"        if (jsonData.message) {",
+							"            console.log(\"API Error Message:\", jsonData.message);",
+							"        } else {",
+							"            console.log(\"API Error Response:\", JSON.stringify(jsonData));",
+							"        }",
+							"    } catch (e) {",
+							"        console.log(\"Non-JSON error response:\", pm.response.text());",
+							"    }",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "c7c735ed-fe9a-44fe-93fc-e1be2388204a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Laxy",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "laxydoe@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "P@ssw0rd123",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Mr",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "15",
+							"type": "text"
+						},
+						{
+							"key": "birth_month",
+							"value": "06",
+							"type": "text"
+						},
+						{
+							"key": "birth_year",
+							"value": "1990",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "John",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Doe",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "Example Corp",
+							"type": "text"
+						},
+						{
+							"key": "address1",
+							"value": "123 Main St",
+							"type": "text"
+						},
+						{
+							"key": "address2",
+							"value": "Apt 4B",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "USA",
+							"type": "text"
+						},
+						{
+							"key": "zipcode",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "California",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Los Angeles",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "+1234567890",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{baseURL}}/api/createAccount"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE METHOD To Delete User Account",
+			"id": "aa724839-ac4b-4b14-b591-e31df103ab60",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "laxydoe@example.com",
+							"type": "text",
+							"uuid": "df80c281-d105-4688-b4f5-903eda81bcfd"
+						},
+						{
+							"key": "password",
+							"value": "P@ssw0rd123",
+							"type": "text",
+							"uuid": "b567cc91-a9ca-44a2-8ff3-2def0e759479"
+						}
+					]
+				},
+				"url": "{{baseURL}}/api/deleteAccount"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT METHOD To Update User Account",
+			"id": "ae4be6cc-6c9f-45ad-8d65-89ef5b75124c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Laxy",
+							"type": "text",
+							"uuid": "a8a92d5b-c034-4933-942c-feaf7dbfbcae"
+						},
+						{
+							"key": "email",
+							"value": "laxydoe@example.com",
+							"type": "text",
+							"uuid": "7f49b56b-5115-4f0b-832d-340ff9204139"
+						},
+						{
+							"key": "password",
+							"value": "P@ssw0rd123",
+							"type": "text",
+							"uuid": "28bd7faf-0d83-4104-bae4-ab69406bb4b4"
+						},
+						{
+							"key": "title",
+							"value": "Mr",
+							"type": "text",
+							"uuid": "15e9c634-9f37-4a0a-93df-2be9da01d805"
+						},
+						{
+							"key": "birth_date",
+							"value": "15",
+							"type": "text",
+							"uuid": "772adba8-47d0-490f-a6a2-91478924e1f0"
+						},
+						{
+							"key": "birth_month",
+							"value": "05",
+							"type": "text",
+							"uuid": "634f0525-1a44-4eb7-8cfc-4c4c090b417e"
+						},
+						{
+							"key": "birth_year",
+							"value": "2002",
+							"type": "text",
+							"uuid": "77054e2a-699f-493f-96a4-87b7792dd6ac"
+						},
+						{
+							"key": "firstname",
+							"value": "john",
+							"type": "text",
+							"uuid": "311c595f-3f78-4072-bdc9-c65affe64bcb"
+						},
+						{
+							"key": "lastname",
+							"value": "Doe",
+							"type": "text",
+							"uuid": "274f35e3-280a-4983-b27a-8068b0c5f9bd"
+						},
+						{
+							"key": "company",
+							"value": "example corp",
+							"type": "text",
+							"uuid": "92b27cd3-9055-4d6b-82bb-7fabccc0262e"
+						},
+						{
+							"key": "address1",
+							"value": "123 Main St",
+							"type": "text",
+							"uuid": "7eb3d322-fb8e-4ac0-9767-298fac3e063b"
+						},
+						{
+							"key": "address2",
+							"value": "Herry Potter home",
+							"type": "text",
+							"uuid": "39ee9d70-9ac3-44fb-b6e1-3737c11938d4"
+						},
+						{
+							"key": "country",
+							"value": "USA",
+							"type": "text",
+							"uuid": "bfb4722d-4d24-425e-a088-1d58d74d8b4f"
+						},
+						{
+							"key": "zipcode",
+							"value": "12345",
+							"type": "text",
+							"uuid": "929bd602-8886-40aa-8914-376c8bd3fda0"
+						},
+						{
+							"key": "state",
+							"value": "California",
+							"type": "text",
+							"uuid": "7dcb27be-13f5-4b9e-b708-1393b240045a"
+						},
+						{
+							"key": "city",
+							"value": "Los Angeles",
+							"type": "text",
+							"uuid": "9b10633b-e10a-446a-8857-e8c901825fd5"
+						},
+						{
+							"key": "mobile_number",
+							"value": "+1234567890",
+							"type": "text",
+							"uuid": "956f5be1-a254-49c9-92ef-920f1868bfbc"
+						}
+					]
+				},
+				"url": "{{baseURL}}/api/updateAccount"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"id": "70d9e45e-c6c5-44b1-a029-a0c2ec8aa114",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/getUserDetailByEmail?email=laxydoe%40example.com",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"getUserDetailByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "laxydoe@example.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
